@@ -273,12 +273,12 @@ plot_fullsib_phases <- function(x, CI = NULL, ...){
   }
   
   df.tot <- x[[1]]
-  if(!exists("qtl.list")) qtl.list <- df.tot[which(df.tot[,1] == ""QTL            ""),-7]
+  if(!exists("qtl.list")) qtl.list <- df.tot[which(df.tot[,1] == "QTL            "),-7]
   qtl.list[,3:6] <- apply(qtl.list[,3:6], 2, as.character)
   qtl.pos <- melt(qtl.list, measure.vars = colnames(qtl.list)[-c(1,2)], variable.name = "haplo")
   qtl.pos <- cbind(qtl.pos, parent = sapply(strsplit(as.character(qtl.pos[,3]), "_"), "[[",1))
   
-  df <- df.tot[-which(df.tot[,1] == ""QTL            ""),-7]
+  df <- df.tot[-which(df.tot[,1] == "QTL            "),-7]
   df[,2] <- c(0,df[,2][-1]-diff(df[,2])/2)
   
   df[,3:6] <- apply(df[,3:6], 2, as.character)
